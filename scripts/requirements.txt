@@ -1,4 +1,6 @@
-marker-pdf>=0.2.0
+marker-api
 pymupdf>=1.23.0
 pillow>=10.0.0
 pyyaml>=6.0
+torch
+torchvision
