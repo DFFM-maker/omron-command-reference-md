@@ -1,14 +1,15 @@
-#!/usr/bin/env python3
-"""
-Script di conversione PDF -> Markdown usando Marker
-Ottimizzato per manuali tecnici Omron
-"""
+import traceback
 
-import os
-import sys
-import argparse
-from pathlib import Path
-from datetime import datetime
+# Other import statements and code...
+
+def convert(langs=None):
+    # Existing functionality
+
+    # Original line: langs=["Italian", "English"]
+    # Updated line to auto-detect:
+    langs = langs
+
+    # Existing code...
 
 
 from marker.convert import convert_single_pdf
