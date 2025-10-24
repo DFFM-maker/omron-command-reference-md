@@ -1,24 +1,25 @@
-import traceback
-
-# Other import statements and code...
-
-def convert(langs=None):
-    # Existing functionality
-
-    # Original line: langs=["Italian", "English"]
-    # Updated line to auto-detect:
-    langs = langs
-
-    # Existing code...
-
-
-from marker.convert import convert_single_pdf
-from marker.models import load_all_models
+#!/usr/bin/env python3
 """
+Script di conversione PDF -> Markdown usando Marker
+Ottimizzato per manuali tecnici Omron
+"""
+
+import os
+import sys
+import argparse
+import traceback
+from pathlib import Path
+from datetime import datetime
+
+try:
+    from marker.converters.pdf import PdfConverter
+    from marker.output import text_from_rendered
+    from marker.convert.pdf import convert_single_pdf
+    from marker.models import load_all_models
 except ImportError:
     print("❌ Marker non è installato. Esegui: pip install -r scripts/requirements.txt")
     sys.exit(1)
-"""
+
 def setup_directories(output_dir: Path):
     """Crea le directory necessarie"""
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -46,7 +47,7 @@ def convert_pdf_to_markdown(pdf_path: Path, output_dir: Path):
         str(pdf_path),
         model_lst,
         max_pages=None,
-        langs=["Italian", "English"],  # Supporto italiano e inglese
+        langs=None,  # Auto-detect languages
         batch_multiplier=2
     )
     
@@ -115,6 +116,7 @@ def main():
         convert_pdf_to_markdown(pdf_path, output_dir)
     except Exception as e:
         print(f"\n❌ Errore durante la conversione: {str(e)}")
+        traceback.print_exc()
         sys.exit(1)
 
 
