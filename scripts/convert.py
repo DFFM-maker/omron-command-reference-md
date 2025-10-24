@@ -10,13 +10,14 @@ import argparse
 from pathlib import Path
 from datetime import datetime
 
-try:
-    from marker.convert import convert_single_pdf
-    from marker.models import load_all_models
+
+from marker.convert import convert_single_pdf
+from marker.models import load_all_models
+"""
 except ImportError:
     print("❌ Marker non è installato. Esegui: pip install -r scripts/requirements.txt")
     sys.exit(1)
-
+"""
 def setup_directories(output_dir: Path):
     """Crea le directory necessarie"""
     output_dir.mkdir(parents=True, exist_ok=True)
