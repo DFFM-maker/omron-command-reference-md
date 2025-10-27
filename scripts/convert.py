@@ -12,9 +12,7 @@ from pathlib import Path
 from datetime import datetime
 
 try:
-    from marker.converters.pdf import PdfConverter
-    from marker.output import text_from_rendered
-    from marker.convert.pdf import convert_single_pdf
+    from marker.convert import convert_single_pdf
     from marker.models import load_all_models
 except ImportError:
     print("❌ Marker non è installato. Esegui: pip install -r scripts/requirements.txt")
